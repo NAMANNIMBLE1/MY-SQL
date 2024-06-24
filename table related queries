@@ -1,17 +1,1 @@
-create database naman;
-use naman;
 
-create table nex(
-    id int primary key , 
-    name varchar(50), 
-    address int not null
-);
-
-insert into nex value(1 , "vaibhav" , 26);
-insert into nex value( 2 , "jason" , 28);
-
-select * from nex;
-SHOW TABLES;
-
-drop database if exists nex;
-drop database if exists hello;
