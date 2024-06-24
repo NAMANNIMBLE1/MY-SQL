@@ -1,1 +1,16 @@
+create database college;
+
+use college;
+
+create table student(
+   id int primary key,
+   name varchar(50),
+   roll_no int not null
+);
+
+select * from student;
+
+insert into student(id , name , roll_no) value(1 , "naman nimble" , 2627);
+insert into student(id , name , roll_no) value(2 , "vaibhav nimble" , 2635);
+insert into student value(3 , "ansh kaim" , 2630);
 
