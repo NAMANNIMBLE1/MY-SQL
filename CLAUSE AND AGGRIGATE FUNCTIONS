@@ -1,0 +1,62 @@
+-- Create the college database
+CREATE DATABASE IF NOT EXISTS college;
+
+-- Use the college database
+USE college;
+
+-- Drop the existing student table if it exists
+DROP TABLE IF EXISTS student;
+
+-- Create the student table
+CREATE TABLE student (
+    customer_id INT,
+    name_ VARCHAR(100),
+    salary INT DEFAULT 5000,
+    CONSTRAINT salary_check CHECK (salary >= 0)
+);
+
+-- Describe the student table to confirm the structure
+DESCRIBE student;
+
+-- Insert values into the student table
+INSERT INTO student (customer_id, name_, salary) VALUES
+(1, 'John Doe', 6000),
+(2, 'Jane Smith', 7000),
+(3, 'Alice Johnson', 5000);
+
+-- Select all entries from the student table where salary is greater than 1000 and less than or equal to 5000
+SELECT * FROM student WHERE salary > 1000 AND salary <= 5000;
+
+-- Select all entries from the student table where salary is greater than 1000 or less than or equal to 5000
+SELECT * FROM student WHERE salary > 1000 OR salary <= 5000;
+
+-- Select all entries from the student table where salary is between 1000 and 10000
+SELECT * FROM student WHERE salary BETWEEN 1000 AND 10000;
+
+-- Select all entries from the student table where customer_id is in (1, 2)
+SELECT * FROM student WHERE customer_id IN (1, 2);
+
+-- Select all entries from the student table where customer_id is not in (1, 2)
+SELECT * FROM student WHERE customer_id NOT IN (1, 2);
+
+-- Select all entries from the student table where name_ is in ('Jane Smith', 'John Doe')
+SELECT * FROM student WHERE name_ IN ('Jane Smith', 'John Doe');
+
+-- Select all entries from the student table where customer_id is 1
+SELECT * FROM student WHERE customer_id = 1;
+
+SELECT * FROM student limit 3;
+
+SELECT * FROM student order by salary asc;
+
+-- aggrigate functions 
+select max(salary) from student;
+select min(salary) from student;
+select avg(salary) from student;
+select count(customer_id) from student;
+
+-- groupby clause 
+select salary, count(customer_id) from student group by salary ;
+
+-- having clause 
+select salary , count(customer_id) from student group by salary having salary >= 6000;
