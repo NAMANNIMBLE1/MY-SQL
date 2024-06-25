@@ -1,0 +1,66 @@
+-- Check if the database exists before creating it
+drop database if exists college;
+CREATE DATABASE IF NOT EXISTS college;
+USE college; -- Select the 'college' database for use
+
+-- Drop the tables if they exist, then create them
+DROP TABLE IF EXISTS students;
+
+CREATE TABLE students (
+    rollno INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+DROP TABLE IF EXISTS course;
+
+CREATE TABLE course (
+    id INT PRIMARY KEY,
+    course VARCHAR(50)
+);
+
+-- Insert data into the 'students' table
+INSERT INTO students (rollno, name) VALUES
+(20, 'naman nimble'),
+(27, 'vaibhav nimble'),
+(40, 'sanchay');
+
+-- Insert data into the 'course' table
+INSERT INTO course (id, course) VALUES
+(20, 'mathematics'),
+(27, 'science'),
+(21, 'english');
+
+
+select * 
+from students
+inner join course
+on course.id = students.rollno;
+
+
+select * 
+from students as s 
+inner join course as c 
+on c.id = s.rollno;
+
+
+select * 
+from students as s 
+left join course as c 
+on c.id = s.rollno;
+
+select * 
+from students as s 
+right join course as c 
+on c.id = s.rollno;
+
+
+-- full join 
+select * 
+from students as s 
+left join course as c 
+on c.id = s.rollno
+union
+select * 
+from students as s 
+right join course as c 
+on c.id = s.rollno;
