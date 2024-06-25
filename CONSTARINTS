@@ -1,0 +1,35 @@
+-- Create the college database
+CREATE DATABASE college;
+
+-- Use the college database
+USE college;
+
+-- Create the customer table
+CREATE TABLE customer (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+-- Create the student table with a foreign key reference to the customer table
+CREATE TABLE student (
+    customer_id INT,
+    salary INT DEFAULT 5000,
+    FOREIGN KEY (customer_id) REFERENCES customer(id),
+    CONSTRAINT salary_check CHECK (salary >= 0)
+);
+
+-- Insert values into the customer table
+INSERT INTO customer (id, name, email) VALUES
+(1, 'John Doe', 'john.doe@example.com'),
+(2, 'Jane Smith', 'jane.smith@example.com'),
+(3, 'Alice Johnson', 'alice.johnson@example.com');
+
+-- Insert values into the student table
+INSERT INTO student (customer_id, salary) VALUES
+(1, 6000),
+(2, 7000),
+(3, 5000);
+
+-- Select all entries from the student table
+SELECT * FROM student;
