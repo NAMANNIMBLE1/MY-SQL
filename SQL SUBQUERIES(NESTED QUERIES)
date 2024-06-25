@@ -1,0 +1,40 @@
+-- Check if the database exists before creating it
+drop database if exists college;
+CREATE DATABASE IF NOT EXISTS college;
+USE college; -- Select the 'college' database for use
+DROP TABLE IF EXISTS students;
+
+CREATE TABLE students (
+    rollno INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+INSERT INTO students (rollno, name) VALUES
+(20, 'naman nimble'),
+(27, 'vaibhav nimble'),
+(40, 'sanchay'),
+(100 , "ansh kaim");
+
+
+
+select * from students ;
+
+select avg(rollno)
+from students;
+
+select name
+from students 
+where rollno > 29;
+
+select name
+from students 
+where rollno > (select avg(rollno) from students);
+
+
+select max(rollno)
+from (select * from students where name = "naman nimble") as temp; 
+
+-- alternative way
+select max(rollno)
+from students 
+where name = "naman nimble";
