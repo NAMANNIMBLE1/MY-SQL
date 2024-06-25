@@ -14,3 +14,40 @@ insert into student(id , name , roll_no) value(1 , "naman nimble" , 2627);
 insert into student(id , name , roll_no) value(2 , "vaibhav nimble" , 2635);
 insert into student value(3 , "ansh kaim" , 2630);
 
+
+
+-- now some table related quaries like update and delete 
+
+CREATE DATABASE IF NOT EXISTS college;
+USE college;
+
+DROP TABLE IF EXISTS student;
+
+CREATE TABLE student (
+    customer_id INT,
+    name_ VARCHAR(100),
+    salary INT DEFAULT 5000,
+    CONSTRAINT salary_check CHECK (salary >= 0)
+);
+
+INSERT INTO student (customer_id, name_, salary) VALUES
+(1, 'John Doe', 6000),
+(2, 'Jane Smith', 7000),
+(3, "Alice Johnson", 5000);
+
+set sql_safe_updates = 0;
+
+update student 
+set salary = 10000
+where customer_id = 1;
+
+update student 
+set salary = 10000
+where name_ = "Alice Johnson";
+
+select * from student;
+
+delete from student
+where salary < 1000;
+
+select* from student;
