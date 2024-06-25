@@ -64,3 +64,9 @@ select *
 from students as s 
 right join course as c 
 on c.id = s.rollno;
+
+-- self join 
+select *
+from students as s 
+join course as c 
+on c.id = s.rollno
