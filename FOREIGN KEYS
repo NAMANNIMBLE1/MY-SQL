@@ -1,0 +1,54 @@
+-- Create database if it does not exist and use it
+drop database if exists college;
+CREATE DATABASE college;
+USE college;
+
+-- Drop tables if they exist
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS dept;
+DROP TABLE IF EXISTS teacher;
+
+-- Create students table
+CREATE TABLE students (
+    rollno INT PRIMARY KEY,
+    name VARCHAR(50),
+    marks INT NOT NULL,
+    grade VARCHAR(1),
+    city VARCHAR(20)
+);
+
+-- Create department table
+CREATE TABLE dept (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+-- Create teacher table with foreign key constraint to dept
+CREATE TABLE teacher (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES dept(id)
+);
+
+-- Insert data into students table
+INSERT INTO students (rollno, name, marks, grade, city)
+VALUES
+(101, 'naman nimble', 99, 'A', 'khera khurd'),
+(102, 'vaibhav nimble', 80, 'A', 'balawala'),
+(103, 'ansh kaim', 96, 'A', 'laxmi nagar'),
+(104, 'tushar kaim', 50, 'A', 'mandawli');
+
+-- Insert data into department table
+INSERT INTO dept (id, name)
+VALUES
+(1, 'Computer Science'),
+(2, 'Mathematics'),
+(3, 'Physics');
+
+-- Insert data into teacher table
+INSERT INTO teacher (id, name, dept_id)
+VALUES
+(201, 'John Smith', 1),
+(202, 'Jane Doe', 2),
+(203, 'Alice Johnson', 3);
