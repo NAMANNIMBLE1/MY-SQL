@@ -38,3 +38,8 @@ from (select * from students where name = "naman nimble") as temp;
 select max(rollno)
 from students 
 where name = "naman nimble";
+
+
+-- sub query inside select 
+select (select max(rollno) from students) , name
+from students;
