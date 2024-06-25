@@ -51,3 +51,46 @@ delete from student
 where salary < 1000;
 
 select* from student;
+
+
+-- rest table queries to alter delete tables 
+
+drop database if exists college;
+CREATE DATABASE college;
+USE college;
+DROP TABLE IF EXISTS students;
+
+CREATE TABLE students (
+    rollno INT PRIMARY KEY,
+    name VARCHAR(50),
+    marks INT NOT NULL,
+    grade VARCHAR(1),
+    city VARCHAR(20)
+);
+
+insert into students values(2627 , "naman nimble" , 98 , 'a' , "khera khurd"),
+(2626 , "vaibhav nimble" , 80 , 'b' , "balawala");
+
+alter table students
+add column age int;
+
+alter table students
+modify age varchar(2);
+
+alter table students
+change age stu_age int;
+
+alter table students
+rename to umar;
+
+alter table umar
+drop column stu_age;
+
+
+truncate table umar;
+
+select * from umar;
+
+
+
+ 
